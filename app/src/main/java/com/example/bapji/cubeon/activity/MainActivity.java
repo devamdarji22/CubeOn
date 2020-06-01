@@ -120,13 +120,13 @@ public class MainActivity extends AppCompatActivity
             fragment.beginTransaction().replace(R.id.fragment,first).commit();
 
             // Handle the camera action
-        } else if (id == R.id.nav_algorithms) {
+        } /*else if (id == R.id.nav_algorithms) {
 
             LearnFragment learnFragment = new LearnFragment();
 
             fragment.beginTransaction().replace(R.id.fragment,learnFragment).commit();
 
-        } else if (id == R.id.nav_setting) {
+        } */else if (id == R.id.nav_setting) {
 
             startActivity(new Intent(MainActivity.this,SettingActivity.class));
 

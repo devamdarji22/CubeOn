@@ -9,10 +9,10 @@
             android:id="@+id/nav_timer"
             android:icon="@drawable/ic_timer"
             android:title="Timer" />
-        <item
+        <!--<item
             android:id="@+id/nav_algorithms"
             android:icon="@drawable/ic_grid"
-            android:title="Algorithms" />
+            android:title="Algorithms" />-->
 
     </group>
 
