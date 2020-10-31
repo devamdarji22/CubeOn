@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -25,7 +26,7 @@ import java.util.*;
  * Created by bapji on 12/11/2019.
  */
 
-public class CountFragment extends Fragment{
+public class CountFragment extends Fragment implements SolveAdapter.OnSolveClickListner {
 
     TextView solveView , eachTimeSolveView;
 
@@ -35,7 +36,7 @@ public class CountFragment extends Fragment{
     Bundle bundle;
     //FragmentManager manager = getChildFragmentManager();
     FragmentTransaction transaction;
-
+    SolveAdapter.OnSolveClickListner onSolveClickListner;
     RecyclerView SolveRecycleView;
     SolveAdapter solveAdapter;
     java.util.ArrayList<EachTime> mSolves;
@@ -80,10 +81,10 @@ public class CountFragment extends Fragment{
             }
             //showMessage("Data",buffer.toString());
 
-
-            solveAdapter = new SolveAdapter(getActivity(),mSolves);
+            Collections.reverse(mSolves);
+            solveAdapter = new SolveAdapter(getActivity(),mSolves,CountFragment.this);
             SolveRecycleView.setAdapter(solveAdapter);
-            SolveRecycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
+            SolveRecycleView.setLayoutManager(new GridLayoutManager(getActivity(),3));
 
 
 
@@ -157,4 +158,8 @@ public class CountFragment extends Fragment{
     }
 
 
+    @Override
+    public void onSolveClick(int pos) {
+
+    }
 }

@@ -25,9 +25,11 @@ public class SolveAdapter extends RecyclerView.Adapter<SolveAdapter.SolveViewHol
 
     Context context;
     List<EachTime> mSolves;
+    OnSolveClickListner onSolveClickListner;
 
-    public SolveAdapter(Context context, List<EachTime> mSolves) {
+    public SolveAdapter(Context context, List<EachTime> mSolves,OnSolveClickListner onSolveClickListner) {
         this.context = context;
+        this.onSolveClickListner = onSolveClickListner;
         this.mSolves = mSolves;
     }
 
@@ -42,7 +44,7 @@ public class SolveAdapter extends RecyclerView.Adapter<SolveAdapter.SolveViewHol
 
 
 
-        return new SolveViewHolder(layout);
+        return new SolveViewHolder(layout,onSolveClickListner);
     }
 
     @Override
@@ -104,7 +106,9 @@ public class SolveAdapter extends RecyclerView.Adapter<SolveAdapter.SolveViewHol
         //holder.eachSolveTime.setText(mSolves.get(position).getCount());
         //holder.eachSolveTime.setText("0.00");
         //holder.eachSolveScramble.setText(mSolves.get(position).getScramble());
-        holder.eachSolveDate.setText(mSolves.get(position).getDate());
+        String date = mSolves.get(position).getDate();
+
+        holder.eachSolveDate.setText(date);
 
 
 
@@ -137,21 +141,32 @@ public class SolveAdapter extends RecyclerView.Adapter<SolveAdapter.SolveViewHol
         return mSolves.size();
     }
 
-    public class SolveViewHolder  extends RecyclerView.ViewHolder{
+    public class SolveViewHolder  extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView eachSolveTime,eachSolveDate,eachSolveScramble;
         RelativeLayout relativeLayout;
+        OnSolveClickListner onSolveClickListner;
 
-        public SolveViewHolder(View itemView) {
+        public SolveViewHolder(View itemView,OnSolveClickListner onSolveClickListner) {
             super(itemView);
 
-
+            this.onSolveClickListner = onSolveClickListner;
             relativeLayout = itemView.findViewById(R.id.relativeLayout);
             eachSolveDate = itemView.findViewById(R.id.each_solve_date);
             //eachSolveScramble = itemView.findViewById(R.id.each_solve_scramble);
             eachSolveTime = itemView.findViewById(R.id.each_solve_title);
-
+            itemView.setOnClickListener(this);
 
         }
+
+        @Override
+        public void onClick(View v) {
+            onSolveClickListner.onSolveClick(getAdapterPosition());
+        }
     }
+
+    public interface OnSolveClickListner{
+        void onSolveClick(int pos);
+    }
+
 }

@@ -9,9 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.EachSolveViewActivty"></activity>
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.ActionBar">
 
@@ -28,9 +30,8 @@
         </activity>
         <activity
             android:name=".activity.Main2Activity"
-            android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"
-            >
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,9 +41,8 @@
         <activity
             android:name=".activity.SettingActivity"
             android:label="@string/title_activity_setting"
-            android:theme="@style/AppTheme.ActionBar"
             android:screenOrientation="portrait"
-            ></activity>
+            android:theme="@style/AppTheme.ActionBar" />
     </application>
 
 </manifest>

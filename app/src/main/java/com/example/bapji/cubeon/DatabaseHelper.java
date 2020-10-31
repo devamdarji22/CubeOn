@@ -50,6 +50,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public void deleteData(int row){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(DATABASE_NAME, COL_1 + "=" + row, null);
+    }
+
     /*public String getBestTime(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select COL_2 from " + TABLE_NAME,null);
